@@ -1,8 +1,13 @@
+import {Route, Routes} from "react-router-dom";
+import Jobs from "./pages/Jobs.jsx";
+import Statistics from "./pages/Statistics.jsx";
+
 function App() {
     return (
-        <div>
-            <p>Merge</p>
-        </div>
+        <Routes>
+            <Route path="/" element={<Jobs/>}/>
+            <Route path="/statistics" element={<Statistics/>}/>
+        </Routes>
     )
 }
 
