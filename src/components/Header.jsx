@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 function Header() {
   return (
-    <div className="col-span-full row-span-1 row-start-1 flex items-center gap-7 bg-blue-600 p-10 text-xl text-white">
+    <div className="flex max-h-24 items-center gap-7 bg-blue-600 p-10 text-xl text-white">
       <motion.button
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.8 }}

@@ -7,7 +7,7 @@ import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
-    <div className="grid h-screen grid-cols-1 grid-rows-12 bg-blue-100">
+    <div className="flex flex-col bg-blue-100">
       <Header />
       <Routes>
         <Route path="/" element={<Jobs />} />
