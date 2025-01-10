@@ -7,6 +7,8 @@ function CityCategoryItem({
   isToggled,
   addCategoryItem,
   removeCategoryItem,
+  isChecked,
+  handleChecking,
 }) {
   const handleOnChange = (e) => {
     if (e.target.checked) {
@@ -14,11 +16,13 @@ function CityCategoryItem({
     } else {
       removeCategoryItem(categoryItemName);
     }
+
+    handleChecking(categoryItemName, e.target.checked);
   };
 
   return (
     <motion.div
-      className="flex items-center justify-between p-3 text-xl"
+      className="flex items-center justify-between p-3 text-lg"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: -50, opacity: 0 }}
@@ -33,8 +37,9 @@ function CityCategoryItem({
       </ul>
       <input
         onChange={handleOnChange}
-        className="h-5 w-5 rounded text-blue-500"
+        className="h-5 w-5 rounded accent-blue-500"
         type="checkbox"
+        checked={isChecked}
       />
     </motion.div>
   );

@@ -12,7 +12,7 @@ import {
 
 function Sidebar() {
   return (
-    <div className="col-span-2 col-start-1 row-span-full row-start-1 overflow-y-auto bg-blue-300">
+    <div className="col-span-3 col-start-2 row-span-2 row-start-1 flex flex-col gap-7 p-4 pb-7 pt-7 no-scrollbar">
       <CategoryList
         categoryName={"cities"}
         categoryLabel={"Cities:"}
