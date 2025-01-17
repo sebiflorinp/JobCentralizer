@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
-import { updatePage } from "../state/slices/infiniteScrollSlice.js";
+import {
+  updatePage,
+  updateSearchParamaters,
+} from "../state/slices/infiniteScrollSlice.js";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -36,7 +39,18 @@ function useSearchJobs() {
   const [queryResult, setQueryResult] = useState([]);
 
   const fetchJobs = async (jobTitle, page = 1) => {
-    const jobsPerPage = 5;
+    const jobsPerPage = 6;
+
+    //dispatch(
+    //updateSearchParamaters({
+    // searchText: jobTitle,
+    //cities,
+    //experience,
+    //sources,
+    //jobTypes,
+    //}),
+    //);
+
     let query = supabase.from("Jobs").select("*");
     if (cities.length > 0) {
       query.overlaps("location", cities);
@@ -57,16 +71,17 @@ function useSearchJobs() {
     if (jobTitle !== "") {
       query.ilike("name", "%" + jobTitle + "%");
     }
-
-    const { data, error } = await query.range(
+    setIsLoading(true);
+    const { data } = await query.range(
       jobsPerPage * (page - 1),
       jobsPerPage * page - 1,
     );
     setQueryResult(data);
+    setIsLoading(false);
   };
 
   const fetchMoreJobs = async () => {
-    const jobsPerPage = 5;
+    const jobsPerPage = 6;
 
     let query = supabase.from("Jobs").select("*");
     if (infiniteScrollCities.length > 0) {
@@ -90,7 +105,7 @@ function useSearchJobs() {
     }
 
     setIsLoading(true);
-    const { data, error } = await query.range(
+    const { data } = await query.range(
       jobsPerPage * (infiniteScrollPage - 1),
       jobsPerPage * infiniteScrollPage - 1,
     );

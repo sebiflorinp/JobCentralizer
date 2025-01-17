@@ -1,9 +1,8 @@
 import CardInformationText from "./CardInformationText.jsx";
 
-function JobCard({ job, ref }) {
+function JobCard({ job }) {
   return (
     <div
-      ref={ref}
       className={"flex flex-col gap-4 rounded-xl bg-white p-4 shadow-md"}
       key={job.id}
     >

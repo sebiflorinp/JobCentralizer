@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Jobs from "./pages/Jobs.jsx";
 import Statistics from "./pages/Statistics.jsx";
 import Header from "./components/Header.jsx";
-import Footer from "./components/Footer.jsx";
 
 function App() {
   return (

@@ -5,13 +5,11 @@ function SearchBar({ setSearchResult }) {
   const [jobTitle, setJobTitle] = useState("");
   const { queryResult, fetchJobs } = useSearchJobs();
 
-  const handleSearch = () => {
-    fetchJobs(jobTitle);
-  };
-
-  useEffect(() => {
+  const handleSearch = async () => {
+    await fetchJobs(jobTitle);
+    console.log(queryResult);
     setSearchResult(queryResult);
-  }, [queryResult]);
+  };
 
   return (
     <div className="flex gap-5 pt-7">

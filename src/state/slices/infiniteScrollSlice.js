@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentPage: 2,
+  currentPage: 1,
   searchText: "",
   cities: [],
   experience: [],
