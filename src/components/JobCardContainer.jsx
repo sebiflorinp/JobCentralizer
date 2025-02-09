@@ -39,9 +39,13 @@ function JobCardContainer({
       hasMore={!isLoading}
     >
       <div className={"flex flex-col gap-4 pb-7"}>
-        {searchResult.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
+        {searchResult.length > 0 &&
+          searchResult.map((job) => <JobCard key={job.id} job={job} />)}
+        {searchResult.length === 0 && (
+          <div className="flex justify-center rounded-xl bg-white p-4 font-bold text-blue-700">
+            <p className="text-2xl">Nu s-a găsit niciun anunț</p>
+          </div>
+        )}
       </div>
     </InfiniteScroll>
   );
