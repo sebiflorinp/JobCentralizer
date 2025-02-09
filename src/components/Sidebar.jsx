@@ -15,7 +15,7 @@ function Sidebar() {
     <div className="col-span-2 col-start-2 flex flex-col gap-7 p-4 pb-7 pt-7 no-scrollbar">
       <CategoryList
         categoryName={"cities"}
-        categoryLabel={"Orașe:"}
+        categoryLabel={"Locații:"}
         categoryField={"city"}
         dispatchAddFunction={addCity}
         dispatchRemoveFunction={removeCity}
