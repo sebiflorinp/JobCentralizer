@@ -15,14 +15,14 @@ function Sidebar() {
     <div className="col-span-2 col-start-2 flex flex-col gap-7 p-4 pb-7 pt-7 no-scrollbar">
       <CategoryList
         categoryName={"cities"}
-        categoryLabel={"Cities:"}
+        categoryLabel={"Orașe:"}
         categoryField={"city"}
         dispatchAddFunction={addCity}
         dispatchRemoveFunction={removeCity}
       />
       <CategoryList
         categoryName={"experience"}
-        categoryLabel={"Experience:"}
+        categoryLabel={"Experiență:"}
         categoryField={"experience"}
         dispatchAddFunction={addExperience}
         dispatchRemoveFunction={removeExperience}
@@ -30,14 +30,14 @@ function Sidebar() {
       <CategoryList
         categoryName={"source"}
         categoryField={"source"}
-        categoryLabel={"Sources"}
+        categoryLabel={"Surse:"}
         dispatchAddFunction={addSource}
         dispatchRemoveFunction={removeSource}
       />
       <CategoryList
         categoryName={"type"}
         categoryField={"job_type"}
-        categoryLabel={"Type"}
+        categoryLabel={"Tipuri:"}
         dispatchAddFunction={addJobType}
         dispatchRemoveFunction={removeJobType}
       />

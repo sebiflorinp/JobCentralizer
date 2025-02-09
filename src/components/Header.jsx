@@ -9,13 +9,13 @@ function Header() {
         transition={{ type: "spring", stiffness: 1000 }}
         className="rounded-xl p-3 duration-100 hover:bg-blue-700 active:bg-blue-500"
       >
-        <Link to="/">Jobs</Link>
+        <Link to="/">Anunțuri</Link>
       </motion.button>
       <motion.button
         whileTap={{ scale: 0.8 }}
         className="rounded-xl p-3 duration-100 hover:bg-blue-700 active:bg-blue-500"
       >
-        <Link to="/statistics">Statistics</Link>
+        <Link to="/statistics">Statistici</Link>
       </motion.button>
     </div>
   );

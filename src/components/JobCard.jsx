@@ -24,20 +24,20 @@ function JobCard({ job }) {
         <div>
           <CardInformationText category={"Companie"} text={job.company} />
           <CardInformationText
-            category={"Locatie: "}
+            category={"Locație"}
             text={job.location.map(
               (city, index) =>
                 city + (index + 1 !== job.location.length ? "," : " ") + " ",
             )}
           />
           <CardInformationText
-            category={"Experienta ceruta"}
+            category={"Experiență cerută"}
             text={job.experience}
           />
         </div>
         <div>
-          <CardInformationText category={"Sursa"} text={job.source} />
-          <CardInformationText category={"Gasit pe"} text={job.found_at} />
+          <CardInformationText category={"Sursă"} text={job.source} />
+          <CardInformationText category={"Găsit pe"} text={job.found_at} />
           <CardInformationText category={"Tipul ofertei"} text={job.job_type} />
         </div>
       </div>
