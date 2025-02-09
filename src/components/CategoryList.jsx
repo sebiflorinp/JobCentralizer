@@ -32,7 +32,7 @@ function CategoryList({
   };
 
   return (
-    <div className="rounded-xl bg-white p-4 drop-shadow-lg">
+    <div className="mr-3 rounded-xl bg-white p-4 drop-shadow-lg">
       <p
         className="text-xl"
         onClick={() => setIsToggleOn((prevState) => !prevState)}
@@ -41,7 +41,6 @@ function CategoryList({
       </p>
       <AnimatePresence>
         <div className={!isToggledOn ? "h-0" : " "}>
-          {isLoading && <p>Loading</p>}
           {!isLoading && isToggledOn && (
             <motion.div
               initial={{ opacity: 0 }}

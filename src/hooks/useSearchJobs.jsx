@@ -1,71 +1,37 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
-import {
-  updatePage,
-  updateSearchParamaters,
-} from "../state/slices/infiniteScrollSlice.js";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 function useSearchJobs() {
-  const cities = useSelector((state) => state.filter.cities);
-  const experience = useSelector((state) => state.filter.experience);
-  const sources = useSelector((state) => state.filter.sources);
-  const jobTypes = useSelector((state) => state.filter.jobTypes);
+  const filters = useSelector((state) => state.filter);
   const [isLoading, setIsLoading] = useState(false);
-
-  const infiniteScrollSearchText = useSelector(
-    (state) => state.infiniteScroll.searchText,
-  );
-  const infiniteScrollPage = useSelector(
-    (state) => state.infiniteScroll.currentPage,
-  );
-  const infiniteScrollCities = useSelector(
-    (state) => state.infiniteScroll.cities,
-  );
-  const infiniteScrollSources = useSelector(
-    (state) => state.infiniteScroll.sources,
-  );
-  const infiniteScrollJobTypes = useSelector(
-    (state) => state.infiniteScroll.jobTypes,
-  );
-  const infiniteScrollExperience = useSelector(
-    (state) => state.infiniteScroll.experience,
-  );
-  const dispatch = useDispatch();
   const [queryResult, setQueryResult] = useState([]);
 
   const fetchJobs = async (jobTitle, page = 1) => {
     const jobsPerPage = 6;
 
-    //dispatch(
-    //updateSearchParamaters({
-    // searchText: jobTitle,
-    //cities,
-    //experience,
-    //sources,
-    //jobTypes,
-    //}),
-    //);
-
-    let query = supabase.from("Jobs").select("*");
-    if (cities.length > 0) {
-      query.overlaps("location", cities);
+    let query = supabase
+      .from("Jobs")
+      .select("*")
+      .order("id", { ascending: false });
+    if (filters.cities.length > 0) {
+      query.overlaps("location", filters.cities);
     }
 
-    if (experience.length > 0) {
-      query.in("experience", experience);
+    if (filters.experience.length > 0) {
+      query.in("experience", filters.experience);
     }
 
-    if (sources.length > 0) {
-      query.in("source", sources);
+    if (filters.sources.length > 0) {
+      query.in("source", filters.sources);
     }
 
-    if (jobTypes.length > 0) {
-      query.in("job_type", jobTypes);
+    if (filters.jobTypes.length > 0) {
+      query.in("job_type", filters.jobTypes);
     }
 
     if (jobTitle !== "") {
@@ -76,42 +42,47 @@ function useSearchJobs() {
       jobsPerPage * (page - 1),
       jobsPerPage * page - 1,
     );
-    setQueryResult(data);
+    await setQueryResult(data);
     setIsLoading(false);
   };
 
-  const fetchMoreJobs = async () => {
+  const fetchMoreJobs = async (filters) => {
     const jobsPerPage = 6;
 
-    let query = supabase.from("Jobs").select("*");
-    if (infiniteScrollCities.length > 0) {
-      query.overlaps("location", infiniteScrollCities);
+    let query = supabase
+      .from("Jobs")
+      .select("*")
+      .order("id", { ascending: false });
+    if (filters.cities.length > 0) {
+      query.overlaps("location", filters.cities);
+      console.log(filters.cities);
     }
 
-    if (infiniteScrollExperience.length > 0) {
-      query.in("experience", infiniteScrollExperience);
+    if (filters.experience.length > 0) {
+      query.in("experience", filters.experience);
     }
 
-    if (infiniteScrollSources.length > 0) {
-      query.in("source", infiniteScrollSources);
+    if (filters.sources.length > 0) {
+      query.in("source", filters.sources);
     }
 
-    if (infiniteScrollJobTypes.length > 0) {
-      query.in("job_type", infiniteScrollJobTypes);
+    if (filters.jobTypes.length > 0) {
+      query.in("job_type", filters.jobTypes);
     }
 
-    if (infiniteScrollSearchText !== "") {
-      query.ilike("name", "%" + infiniteScrollSearchText + "%");
+    if (filters.searchText !== "") {
+      query.ilike("name", "%" + filters.searchText + "%");
     }
 
     setIsLoading(true);
     const { data } = await query.range(
-      jobsPerPage * (infiniteScrollPage - 1),
-      jobsPerPage * infiniteScrollPage - 1,
+      jobsPerPage * (filters.currentPage - 1),
+      jobsPerPage * filters.currentPage - 1,
     );
-    dispatch(updatePage());
-    setQueryResult((prevState) => [...prevState, ...data]);
+    console.log(queryResult);
+    console.log(data);
     setIsLoading(false);
+    return data;
   };
 
   return { queryResult, fetchJobs, fetchMoreJobs, isLoading };
