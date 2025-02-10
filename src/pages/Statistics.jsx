@@ -47,7 +47,7 @@ function Statistics() {
           setTitleFunction={setTitle}
         />
       </div>
-      <div className="col-span-6 col-start-3 grid grid-cols-12 rounded-xl bg-white">
+      <div className="col-span-6 col-start-3 grid grid-cols-12 rounded-xl bg-white shadow-md">
         <div className="col-span-full flex justify-center py-8 text-2xl font-semibold text-blue-700">
           <p>{title}</p>
         </div>
