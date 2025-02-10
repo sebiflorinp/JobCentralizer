@@ -11,12 +11,12 @@ JobCentralizer is a website which centralizes all of the tech job listings from 
 
 [![JobCentralizer-job-search](https://i.postimg.cc/fRvtXJtr/image.png)]()
 
+[![JobCentralizer-job-statistic](https://i.postimg.cc/d0J5VgmY/image.png)]()
+
 ## Roadmap
 
-- Add infinity scroll
+- Change the library used for charts
 
 - Add a filter for remote and onsite jobs
-
-- Add the statistics section
 
 - Add a mobile layout
