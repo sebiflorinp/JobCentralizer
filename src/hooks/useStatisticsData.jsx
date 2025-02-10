@@ -6,10 +6,10 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 function useStatisticsData() {
-  const [jobsPerCityData, setJobsPerCityData] = useState();
-  const [jobsPerTypeData, setJobsPerTypeData] = useState();
-  const [jobsPerSourceData, setJobsPerSourceData] = useState();
-  const [jobsPerExperienceData, setJobsPerExperienceData] = useState();
+  const [jobsPerCityData, setJobsPerCityData] = useState(null);
+  const [jobsPerTypeData, setJobsPerTypeData] = useState(null);
+  const [jobsPerSourceData, setJobsPerSourceData] = useState(null);
+  const [jobsPerExperienceData, setJobsPerExperienceData] = useState(null);
 
   useEffect(() => {
     const prepareData = async (
@@ -49,7 +49,7 @@ function useStatisticsData() {
       // Add the other category if there are any jobs there
       if (otherCount !== 0) {
         temporaryData = {
-          labels: [...temporaryData.labels, "Other"],
+          labels: [...temporaryData.labels, "Altele"],
           values: [...temporaryData.values, otherCount],
         };
       }

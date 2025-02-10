@@ -1,5 +1,5 @@
 import useStatisticsData from "../hooks/useStatisticsData.jsx";
-import { useEffect } from "react";
+import BarChart from "./../components/BarChart.jsx";
 
 function Statistics() {
   const {
@@ -9,20 +9,9 @@ function Statistics() {
     jobsPerExperienceData,
   } = useStatisticsData();
 
-  useEffect(() => {
-    console.log(jobsPerCityData);
-    console.log(jobsPerTypeData);
-    console.log(jobsPerSourceData);
-    console.log(jobsPerExperienceData);
-  }, [
-    jobsPerCityData,
-    jobsPerTypeData,
-    jobsPerSourceData,
-    jobsPerExperienceData,
-  ]);
   return (
     <div>
-      <p>Statistics</p>
+      <BarChart label={"Anunturi per locatie"} data={jobsPerCityData} />
     </div>
   );
 }
