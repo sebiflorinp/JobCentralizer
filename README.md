@@ -1,6 +1,8 @@
 
 # JobCentralizer
 
+Live site: https://jobcentralizer.netlify.app/
+
 JobCentralizer is a website which centralizes all of the tech job listings from various websites in Romania. It uses the scripts from this repository: https://github.com/sebiflorinp/job-scraping-scripts
 
 ## You can:
