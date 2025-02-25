@@ -19,8 +19,8 @@ function Statistics() {
   }, [jobsPerCityData]);
 
   return (
-    <div className="grid grid-cols-10">
-      <div className="col-span-full mt-14 flex max-w-full justify-center gap-3 pb-14">
+    <div className="mx-20 mt-7 flex flex-col gap-4">
+      <div className="flex justify-center gap-4 p-4">
         <ChartButton
           title="Anunțuri per Oraș"
           data={jobsPerCityData}
@@ -47,13 +47,11 @@ function Statistics() {
           setTitleFunction={setTitle}
         />
       </div>
-      <div className="col-span-6 col-start-3 grid grid-cols-12 rounded-xl bg-white shadow-md">
-        <div className="col-span-full flex justify-center py-8 text-2xl font-semibold text-blue-700">
-          <p>{title}</p>
-        </div>
-        <div className="col-span-10 col-start-2 pb-16">
-          <Chart data={dataToDisplay} />
-        </div>
+      <div className="flex flex-col justify-center rounded-xl bg-white shadow-md">
+        <p className="self-center py-8 text-2xl font-semibold text-blue-700">
+          {title}
+        </p>
+        <Chart data={dataToDisplay} />
       </div>
     </div>
   );

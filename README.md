@@ -13,7 +13,7 @@ JobCentralizer is a website which centralizes all of the tech job listings from 
 
 [![JobCentralizer-job-search](https://i.postimg.cc/fRvtXJtr/image.png)]()
 
-[![JobCentralizer-job-statistics](https://i.postimg.cc/d0J5VgmY/image.png)]()
+[![JobCentralizer-job-statistics](https://i.postimg.cc/xC81WBTd/image.png)]()
 
 ## Roadmap
 
