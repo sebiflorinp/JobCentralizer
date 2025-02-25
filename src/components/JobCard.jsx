@@ -9,16 +9,16 @@ function JobCard({ job }) {
     >
       <div className={"flex items-center justify-between"}>
         <h1 className={"text-2xl font-semibold text-blue-700"}>{job.name}</h1>
-        <motion.button
-          className={
-            "rounded-lg bg-blue-600 p-2 px-4 text-lg text-white hover:bg-blue-700 active:bg-blue-500"
-          }
-          whileTap={{ scale: 0.9 }}
-        >
-          <a href={job.details} target="_blank">
+        <a href={job.details} target="_blank">
+          <motion.button
+            className={
+              "rounded-lg bg-blue-600 p-2 px-4 text-lg text-white hover:bg-blue-700 active:bg-blue-500"
+            }
+            whileTap={{ scale: 0.9 }}
+          >
             Detalii
-          </a>
-        </motion.button>
+          </motion.button>
+        </a>
       </div>
       <div className={"flex justify-between px-4"}>
         <div>
