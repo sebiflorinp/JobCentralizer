@@ -1,7 +1,7 @@
 import useStatisticsData from "../hooks/useStatisticsData.jsx";
-import BarChart from "./../components/BarChart.jsx";
 import { useEffect, useState } from "react";
 import ChartButton from "../components/ChartButton.jsx";
+import Chart from "../components/Chart.jsx";
 
 function Statistics() {
   const {
@@ -12,7 +12,7 @@ function Statistics() {
   } = useStatisticsData();
 
   const [dataToDisplay, setDataToDisplay] = useState(jobsPerCityData);
-  const [title, setTitle] = useState("Anunturi per Oras");
+  const [title, setTitle] = useState("Anunțuri per Oras");
 
   useEffect(() => {
     setDataToDisplay(jobsPerCityData);
@@ -52,7 +52,7 @@ function Statistics() {
           <p>{title}</p>
         </div>
         <div className="col-span-10 col-start-2 pb-16">
-          <BarChart data={dataToDisplay} />
+          <Chart data={dataToDisplay} />
         </div>
       </div>
     </div>

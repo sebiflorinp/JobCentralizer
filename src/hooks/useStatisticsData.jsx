@@ -22,10 +22,7 @@ function useStatisticsData() {
 
       let totalCount = 0;
       let minimumAmount = 0;
-      let temporaryData = {
-        labels: [],
-        values: [],
-      };
+      let temporaryData = [];
 
       // Calculate how much data is needed to pass the 3% threshold
       data.forEach((dataObject) => {
@@ -39,19 +36,22 @@ function useStatisticsData() {
         if (dataObject[countColumnName] < minimumAmount) {
           otherCount += dataObject[countColumnName];
         } else {
-          temporaryData = {
-            labels: [...temporaryData.labels, dataObject[labelColumnName]],
-            values: [...temporaryData.values, dataObject[countColumnName]],
-          };
+          temporaryData = [
+            ...temporaryData,
+            {
+              name: dataObject[labelColumnName],
+              value: dataObject[countColumnName],
+            },
+          ];
         }
       });
 
       // Add the other category if there are any jobs there
       if (otherCount !== 0) {
-        temporaryData = {
-          labels: [...temporaryData.labels, "Altele"],
-          values: [...temporaryData.values, otherCount],
-        };
+        temporaryData = [
+          ...temporaryData,
+          { name: "Altele", value: otherCount },
+        ];
       }
 
       setDataFunction(temporaryData);

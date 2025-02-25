@@ -17,8 +17,6 @@ JobCentralizer is a website which centralizes all of the tech job listings from 
 
 ## Roadmap
 
-- Change the library used for charts
-
 - Add a filter for remote and onsite jobs
 
 - Add a mobile layout
